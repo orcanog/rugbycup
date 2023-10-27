@@ -1,0 +1,47 @@
+{% extends "_base.html" %}
+
+{% block title %}Formulaire{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Formulaire de mise à jour</h2>
+    <p>Ce formulaire sert à mettre à jour les données personnelles des personnes inscrites à la newsletter, par exemple pour respecter leur droit de regard dans le cadre du règlement général sur la protection des données (RGPD).</p>
+    <p></p>
+    {% if alert %}
+    <div class="alert alert-warning" role="alert">
+        {{ alert }}
+    </div>
+    {% endif %}
+    <form method="POST">
+        <fieldset>
+            <legend>Administrateur</legend>
+            <p>
+                {{ form.adminuser.errors }}
+                {{ form.adminuser.label_tag }} {{ form.adminuser }}
+            </p>
+            <p>
+                {{ form.adminpassword.errors }}
+                {{ form.adminpassword.label_tag }} {{ form.adminpassword }}
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Inscrit à la newsletter</legend>
+            <p>
+                {{ form.email.errors }}
+                {{ form.email.label_tag }} {{ form.email }}
+                <small>{{ form.email.help_text }}</small>
+            </p>
+            <p>
+                {{ form.name.errors }}
+                {{ form.name.label_tag }} {{ form.name }}
+            </p>
+            <p>
+                {{ form.consent.errors }}
+                {{ form.consent.label_tag }} {{ form.consent }}
+            </p>
+        </fieldset>
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Envoyer">
+    </form>
+</div>
+{% endblock %}

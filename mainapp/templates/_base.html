@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'fonts.css' %}">
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+
+        <title>{% block title %}Page sans titre{% endblock %} - Rugby Tropical Cup 2023</title>
+    </head>
+    <body>
+        <header>
+            <nav class="container">
+                <img id="logo" src="{% static "logo.svg" %}" alt="Rugby Tropical Cup 2023">
+                <p>RTC 2023 WORLDWIDE PARTNERS</p>
+                <div class="partners">
+                    <img src="{% static "partner_kyushuairways.svg" %}">
+                    <img src="{% static "partner_vcard.svg" %}">
+                    <img src="{% static "partner_hydrobility.svg" %}">
+                </div>
+                <ul>
+                    <li>
+                        <a href="{% url "home" %}" {% if request.resolver_match.url_name == "home" %}class="active"{% endif %}>
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url "stadiums" %}" {% if request.resolver_match.url_name == "stadiums" %}class="active"{% endif %}>
+                            Stades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url "teams" %}" {% if request.resolver_match.url_name == "teams" %}class="active"{% endif %}>
+                            Équipes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url "newsletter" %}" {% if request.resolver_match.url_name == "newsletter" %}class="active"{% endif %}>
+                            Newsletter
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer>
+            <p>Projet "Django ORM"</p>
+            <a href="{% url "update" %}">Formulaire de mise à jour des inscrits à la newsletter (réservé aux administrateurs)</a>
+            <p>Drapeaux provenant de <a href="https://flagicons.lipis.dev/">Country Flags in SVG</a></p>
+            <p>RTC 2023 WORLDWIDE PARTNERS</p>
+            <div class="partners">
+                <img src="{% static "partner_kyushuairways.svg" %}">
+                <img src="{% static "partner_vcard.svg" %}">
+                <img src="{% static "partner_hydrobility.svg" %}">
+            </div>
+        </footer>
+    </body>
+</html>

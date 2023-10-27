@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+
+{% block title %}Newsletter{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>La Newsletter officielle</h2>
+    <p>Retrouvez ici tous les stades dans lesquels se dérouleront les rencontres de la Rugby Tropical Cup.</p>
+    <p>Il y a déjà {{ count }} inscrits à notre newsletter, rejoignez-les !</p>
+    {% if alert %}
+    <div class="alert alert-warning" role="alert">
+        {{ alert }}
+    </div>
+    {% endif %}
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="S'inscrire">
+    </form>
+</div>
+{% endblock %}

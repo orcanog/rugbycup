@@ -1,0 +1,165 @@
+:root {
+    --color-pink: #FD2463;
+    --color-orange: #F69D00;
+}
+
+html, body {
+    background: white;
+}
+
+header {
+    padding: 2em 0 0 0;
+    color: white;
+    background: url(header.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+header::after {
+    content: "";
+    display: block;
+    height: 15px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header .container #logo {
+    height: 150px;
+    margin-right: 3em;
+}
+
+header .container > p {
+    margin: 0.5rem;
+    font-size: 1.3em;
+    font-family: "Akshar", sans-serif;
+}
+
+.partners {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.partners img {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    padding: 0;
+    font-size: 1.6em;
+    font-family: "Akshar", sans-serif;
+    font-weight: 600;
+    flex-direction: row;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+nav a {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    color: white;
+    border: 5px solid transparent;
+}
+
+nav a:hover {
+    color: white;
+    border-radius: 5px;
+    border-color: var(--color-pink);
+}
+
+nav a.active {
+    border-radius: 5px;
+    border-color: var(--color-orange);
+}
+
+main .container {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background: white;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Akshar", sans-serif;
+    font-weight: 600;
+}
+
+h2 {
+    padding: 0.25em;
+    margin-top: -1rem;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    background:linear-gradient(to top, var(--color-pink) 0%, var(--color-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h3 {
+    padding-bottom: 3px;
+    border-bottom: 5px solid rgba(255,140,0,1);
+}
+
+.team h3 {
+    margin-top: 2rem;
+    border: none;
+}
+.team h3 span {
+    display: inline-block;
+    margin: 0.5rem 0;
+    padding: 0.25rem;
+    color: white;
+    background: black;
+}
+
+.team .flag {
+    min-width: 150px;
+    max-width: 20%;
+    float: right;
+    outline: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    width: 370px;
+    text-align: right;
+}
+
+form input[type="submit"] {
+    margin-left: 370px;
+}
+
+form fieldset legend {
+    padding: 0 0 0 375px;
+    border-bottom: 3px solid black;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer ,footer a {
+    color: #999;
+}
+
+footer a:hover {
+    color: black;
+}
+
+footer .partners img:last-of-type {
+    filter: invert(1);
+}

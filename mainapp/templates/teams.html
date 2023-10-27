@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Les équipes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Les équipes</h2>
+    <p>Découvrez chaque équipe de rugby à XV faisant partie de la compétition !</p>
+    <div class="row">
+        {% for team in teams %}
+        <div class="team col-md-6 mb-5">
+            <h3 style="background: linear-gradient(to right, #{{ team.color_first }}, #{{ team.color_second }});">
+                <span>{{ team.country }}</span>
+            </h3>
+            <img class="flag" src="{% static team.flag %}" />
+            <p></p>
+            <ul>
+                <li><strong>Surnom :</strong> {{ team.nickname }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
