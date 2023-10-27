@@ -1,0 +1,23 @@
+
+html, body {
+    margin: 0;
+}
+
+body {
+    color: white;
+    font-family: sans-serif;
+    background: black;
+}
+
+header nav {
+    display: flex;
+}
+
+header nav a {
+    flex: 1;
+    height: 2em;
+    color: white;
+    line-height: 2em;
+    text-align: center;
+}
+
