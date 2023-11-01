@@ -15,6 +15,7 @@ SECRET_KEY = "velicyjh0)jmde&@qj=_)hzik!&sw4ml8b92ni&!y@=cu(-hj8"
 INSTALLED_APPS = [
     # On explicite l"usage de notre application pour que les templates
     # soient détectés automatiquement par Django
+    "corsheaders",
     "mainapp.apps.MainappConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware"
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -33,6 +35,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Les URLs sont désormais déclarées dans leur propre module
 ROOT_URLCONF = "mainapp.urls"
