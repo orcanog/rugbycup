@@ -1,0 +1,45 @@
+
+html, body {
+    margin: 0;
+}
+
+body {
+    color: white;
+    font-family: sans-serif;
+    background: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#scanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#scanner h1 {
+    font-size: 1.3rem;
+}
+
+.event-detail{
+    border: solid 1px white;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}

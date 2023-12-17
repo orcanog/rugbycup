@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from mainapp.models import Stadium, Event, Team, Ticket
+from datetime import datetime
+
 
 def stadium_list(request):
     MAX_OBJECTS = 20
@@ -22,8 +24,34 @@ def stadium_detail(request, pk):
 
 def event_list(request):
     MAX_OBJECTS = 20
-    events = Event.objects.all()[:MAX_OBJECTS]
-    data = {"events": list(events.values("stadium", "team_home", "team_away", "start"))}
+    events = Event.objects.select_related('stadium', 'team_home', 'team_away').all()[:MAX_OBJECTS]
+    #print(events)
+    data = {"events": [
+        {"stadium": {
+            "id": event.stadium.id,
+            "name": event.stadium.name,
+            "location": event.stadium.location,
+            "latitude": event.stadium.latitude,
+            "longitude": event.stadium.longitude,
+        } if event.stadium else "N/A", 
+         "team_home": {
+            "id": event.team_home.id,
+            "country": event.team_home.country,
+            "country_alpha2": event.team_home.country_alpha2,
+            "nickname": event.team_home.nickname,
+            "color_first": event.team_home.color_first,
+            "color_second": event.team_home.color_second,
+         } if event.team_home else "N/A", 
+         "team_away": {
+            "id": event.team_away.id,
+            "country": event.team_away.country,
+            "country_alpha2": event.team_away.country_alpha2,
+            "nickname": event.team_away.nickname,
+            "color_first": event.team_away.color_first,
+            "color_second": event.team_away.color_second,
+         } if event.team_away else "N/A", 
+         "start": datetime.strftime(event.start, "%d/%m %H:%M")} 
+         for event in events]}
     return JsonResponse(data)
 
 def event_detail(request, pk):
