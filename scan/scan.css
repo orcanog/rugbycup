@@ -1,7 +1,6 @@
 
 html, body {
     margin: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -22,16 +21,37 @@ header nav a {
     text-align: center;
 }
 
-#events {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
+    justify-content: center;
+    gap: 3rem;
 }
 
-.event {
+.hidden {
+    display: none;
+}
+
+.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+}
+
+#scanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#scanner h1 {
+    font-size: 1.3rem;
+}
+
+.event-detail{
+    border: solid 1px white;
+    padding-left: 4rem;
+    padding-right: 4rem;
 }

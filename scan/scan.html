@@ -3,11 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="scan.css">
     </head>
     <body>
         <header>
             <img src="logo_horizontal.svg">
+            <nav>
+                <a href="/mobile/mobile.html">Matchs</a>
+            </nav>
         </header>
 
         <div class="container">
@@ -18,11 +21,11 @@
             <button onclick="processQRCode()">Analyser le QR Code</button>
         </div>
 
-        <div id="result" class="hidden"></div>
+        <div id="result"></div>
 
     </div>
 
         <script src=" https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js "></script>
-        <script src="app.js"></script>
+        <script src="scan.js"></script>
     </body>
 </html>

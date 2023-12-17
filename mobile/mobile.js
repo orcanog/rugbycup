@@ -1,15 +1,21 @@
 const eventsContainer = document.querySelector('#events');
 
 window.addEventListener('load', function () {
+
+    // Appel API avec fetch
     fetch("http://localhost:8000/api/events")
+
+    // Récupération des données et conversion en JSON
     .then(response => response.json())
+
+    // Traitement des données
     .then(data => {
     
-        // Assurez-vous que data.events est un tableau
-        const eventsData = data.events || [];
+        // Création d'une variable pour stocker les données de l'API
+        const eventsData = data.events;
 
+        // Création des éléments HTML pour chaque élément contenu dans la variable eventsData
         eventsData.forEach((item) => {
-            // Créer un nouvel élément div pour chaque événement
             const eventDiv = document.createElement('div');
             eventDiv.classList.add('event');
 
@@ -24,20 +30,20 @@ window.addEventListener('load', function () {
             const eventDivTeams = document.createElement('div');
             eventDivTeams.classList.add('event-teams');
 
-            // Créer un nouvel élément h4 pour le titre de l'événement
             const eventTitle = document.createElement('p');
             eventTitle.classList.add('event-title');
             eventTitle.textContent = `${item.team_home?.country ?? "-"} vs ${item.team_away?.country ?? "-"}`;
 
-            // Ajouter le titre à la div de l'événement
+            // Ajouts à la div event
             eventDiv.appendChild(eventStadium);
             eventDiv.appendChild(eventDate);
             eventDivTeams.appendChild(eventTitle);
             eventDiv.appendChild(eventDivTeams);
 
-            // Ajouter la div de l'événement au conteneur d'événements
+            // Ajout au conteneur d'événements
             eventsContainer.appendChild(eventDiv);
         });
     })
+    // Renvoie d'erreur dans la console si un problème survient
     .catch(error => console.error('Error:', error));
 });

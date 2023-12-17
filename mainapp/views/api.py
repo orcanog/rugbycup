@@ -24,8 +24,11 @@ def stadium_detail(request, pk):
 
 def event_list(request):
     MAX_OBJECTS = 20
+
+    # Récupération des événements, le select_related permet de faire une jointure sur les clés étrangères pour éviter les requêtes supplémentaires
     events = Event.objects.select_related('stadium', 'team_home', 'team_away').all()[:MAX_OBJECTS]
-    #print(events)
+
+    #Construction du dictionnaire data à partir des données de la variable events
     data = {"events": [
         {"stadium": {
             "id": event.stadium.id,
@@ -33,7 +36,7 @@ def event_list(request):
             "location": event.stadium.location,
             "latitude": event.stadium.latitude,
             "longitude": event.stadium.longitude,
-        } if event.stadium else "N/A", 
+        } if event.stadium else "N/A",
          "team_home": {
             "id": event.team_home.id,
             "country": event.team_home.country,
